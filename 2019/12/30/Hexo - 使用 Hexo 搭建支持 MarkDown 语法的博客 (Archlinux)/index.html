@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="安装 Node.jsCentOS 7 下安装 Node.js
+这是第一个坑，千万不要使用yum直接安装，似乎是直接安装版本太低， hexo 无法被正确执行。
+
+到官网下载最新的稳定版本，选择 Linux Binaries (x64)  的链接 
+123456# 下载wget https://node">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="蔬果大棚">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="使用 Hexo 搭建支持 MarkDown 语法的博客 (Archlinux)"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="户外小苑"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content=""/>
+    
+
+    <!-- Title -->
+    
+    <title>使用 Hexo 搭建支持 MarkDown 语法的博客 (Archlinux) - 户外小苑</title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/reset.css">
+
+    
+<link rel="stylesheet" href="/css/main.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!--Favicon-->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+<!-- Menu -->
+<!-- Navigation -->
+<header>
+    <div class="logo">
+        <a href="/">户外小苑</a>
+    </div><!-- end logo -->
+
+    <div id="menu_icon"></div>
+    <nav>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+            
+        </ul>
+    </nav><!-- end navigation menu -->
+
+    <div class="footer clearfix">
+        <ul class="social clearfix">
+            
+            
+                <li><a href="https://www.facebook.com/" class="fb" target="_blank" data-title="Facebook"></a></li>
+            
+            
+                <li><a href="https://www.behance.net/" class="behance" target="_blank" data-title="Behance"></a></li>
+            
+            
+                <li><a href="https://plus.google.com/+Pixelhint/posts" class="google" target="_blank" data-title="Google+"></a></li>
+            
+            
+                <li><a href="https://dribbble.com/pixelhint" class="dribble" target="_blank" data-title="Dribble"></a></li>
+            
+            
+            
+            
+        </ul><!-- end social -->
+
+        <div class="rights">
+            <p>Copyright © 2014 magnetic.</p>
+            <p>Template by <a href="http://pixelhint.com/magnetic-free-html5-responsive-photography-website-template/" target="_blank" rel="noopener">Pixelhint.com</a></p>
+            <p>Hexo Theme by <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan K.</a></p>
+        </div><!-- end rights -->
+    </div ><!-- end footer -->
+</header><!-- end header -->
+
+
+<!-- Main Content -->
+<section class="main clearfix">
+
+    <section class="top" style="background: url('http://placehold.it/1300x500');">
+        <div class="wrapper content_header clearfix">
+            
+
+<div class="work_nav">
+
+    <ul class="btn clearfix">
+        
+        <li><a href="/2019/12/30/Hello%20-%20World/" class="previous" data-title="世界很大"></a></li>
+        
+        <li><a href="/" class="grid" data-title="Portfolio"></a></li>
+        
+        <li><a href="/2019/12/30/Hexo%20-%20%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/" class="next" data-title="Hexo文章中插入图片"></a></li>
+        
+    </ul>
+
+</div><!-- end work_nav -->
+            <h1 class="title">使用 Hexo 搭建支持 MarkDown 语法的博客 (Archlinux)</h1>
+        </div>
+    </section><!-- end top -->
+
+    <section class="wrapper">
+        <div class="content">
+
+            <!-- Gallery -->
+            
+
+            <!-- Content -->
+            <h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 <code>Node.js</code></h2><h3 id="CentOS-7-下安装-Node-js"><a href="#CentOS-7-下安装-Node-js" class="headerlink" title="CentOS 7 下安装 Node.js"></a>CentOS 7 下安装 <code>Node.js</code></h3><blockquote>
+<p>这是第一个坑，千万不要使用<code>yum</code>直接安装，似乎是直接安装版本太低， hexo 无法被正确执行。</p>
+</blockquote>
+<p>到官网<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">下载</a>最新的稳定版本，选择 Linux Binaries (x64)  的链接 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载</span></span><br><span class="line">wget https://nodejs.org/dist/v12.14.0/node-v12.14.0-linux-x64.tar.xz</span><br><span class="line"><span class="comment"># 解压</span></span><br><span class="line">tar -xvf node-v12.14.0-linux-x64.tar.xz</span><br><span class="line"><span class="comment"># 移至指定目录</span></span><br><span class="line">mv node-v12.14.0-linux-x64.tar.xz /usr/<span class="built_in">local</span>/node</span><br></pre></td></tr></table></figure>
+<h3 id="Arch-Linux-下安装-Node-js"><a href="#Arch-Linux-下安装-Node-js" class="headerlink" title="Arch Linux 下安装 Node.js"></a>Arch Linux 下安装 <code>Node.js</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S nodejs npm --needed</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><h3 id="Arch-Linux-下安装-Hexo"><a href="#Arch-Linux-下安装-Hexo" class="headerlink" title="Arch Linux 下安装 Hexo"></a>Arch Linux 下安装 <code>Hexo</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo-cli   <span class="comment"># 全局安装 hexo 包</span></span><br><span class="line">sudo npm install hexo          <span class="comment"># 局部安装 hexo 包 (进阶用户)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="CentOS-7-下安装-Hexo"><a href="#CentOS-7-下安装-Hexo" class="headerlink" title="CentOS 7 下安装 Hexo"></a>CentOS 7 下安装 <code>Hexo</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo-cli hexo-server</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="安装之后，可以使用以下两种方式执行-Hexo："><a href="#安装之后，可以使用以下两种方式执行-Hexo：" class="headerlink" title="安装之后，可以使用以下两种方式执行 Hexo："></a>安装之后，可以使用以下两种方式执行 Hexo：</h5><ol>
+<li><p><code>npx hexo</code></p>
+</li>
+<li><p>将 Hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'PATH="$PATH:./node_modules/.bin"'</span> &gt;&gt; ~/.profile</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h4 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h4><p>切换到 hexo 的目录下，使用 git 下载主题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/klugjo/hexo-theme-magnetic themes/magnetic</span><br></pre></td></tr></table></figure>
+<p>Then update your blog’s main _config.yml to set the theme to magnetic:</p>
+<p>i.e:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: http://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: http://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">magnetic</span></span><br><span class="line"><span class="comment">##### Next 主题</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="About-页"><a href="#About-页" class="headerlink" title="About 页"></a>About 页</h4><p>使用 <code>hexo new post &quot;about&quot;</code> 命令新建并编辑 about 页</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">"about"</span></span><br></pre></td></tr></table></figure>
+
+<p>编辑 Next 主题的配置文件，路径是 hexo/themes/next/_config.yml</p>
+<p>去掉行注释</p>
+<h2 id="GitHub-密钥"><a href="#GitHub-密钥" class="headerlink" title="GitHub 密钥"></a>GitHub 密钥</h2><h3 id="上传-public-密钥"><a href="#上传-public-密钥" class="headerlink" title="上传 public 密钥"></a>上传 public 密钥</h3><p>按<a href="https://help.github.com/en/enterprise/2.17/user/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account" target="_blank" rel="noopener">这里</a>上传密钥，若上传成功，则所示如下</p>
+<img src="Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/image-20191230080330345.png" alt="image-20191230080330345" style="zoom: 67%;" />
+
+<h3 id="测试密钥"><a href="#测试密钥" class="headerlink" title="测试密钥"></a>测试密钥</h3><p>输入<code>ssh -T git@github.com</code>，如果如下图所示，出现你的用户名，那就成功了。</p>
+<p><img src="Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/image-20191230080006308.png" alt="image-20191230080006308"></p>
+<h2 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h2><h3 id="在-GitHub-里设置定义的域名"><a href="#在-GitHub-里设置定义的域名" class="headerlink" title="在 GitHub 里设置定义的域名"></a>在 GitHub 里设置定义的域名</h3><p>如果仅在域名服务商里设置 <code>CNAME</code> 而不再 GitHub 里制定对应的域名的话，访问自定义域名的时候会提示 <code>404</code> 错误 ！</p>
+<p><img src="Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/image-20191230071813790.png" alt="image-20191230071813790"></p>
+<h3 id="强制启用-HTTPS"><a href="#强制启用-HTTPS" class="headerlink" title="强制启用 HTTPS"></a>强制启用 HTTPS</h3><p>刚制定的域名不会马上获得证书，需要等待大约 24 小时的时间来处理</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://www.jianshu.com/p/b8e7bb004a27" target="_blank" rel="noopener">https://www.jianshu.com/p/b8e7bb004a27</a></p>
+
+
+            <!-- Tags -->
+            
+
+
+<div class="tags">
+    
+</div>
+
+
+
+            <!-- Comments -->
+            <div>
+                
+
+
+
+
+            </div>
+        </div><!-- end content -->
+    </section>
+</section><!-- end main -->
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+
+<script src="/js/jquery.js"></script>
+
+
+<!-- Custom Code -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>

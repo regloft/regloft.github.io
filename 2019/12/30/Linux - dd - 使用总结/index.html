@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="dd命令中I/O模型的使用By Lirenke
+ Published Jan 7 2015
+Contents
+今天在工作中看到一封邮件，内容大体是开发人员指出了一处测试人员在测试过程中使用了错误的测试硬盘读写方法。测试采用dd命令，这个无可厚非，dd乃linux下与tcpdump齐名的强大命令，但是">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="蔬果大棚">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Linux - dd - 使用总结"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="户外小苑"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content=""/>
+    
+
+    <!-- Title -->
+    
+    <title>Linux - dd - 使用总结 - 户外小苑</title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/reset.css">
+
+    
+<link rel="stylesheet" href="/css/main.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!--Favicon-->
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+
+<!-- Menu -->
+<!-- Navigation -->
+<header>
+    <div class="logo">
+        <a href="/">户外小苑</a>
+    </div><!-- end logo -->
+
+    <div id="menu_icon"></div>
+    <nav>
+        <ul>
+            
+            <li>
+                <a href="/">Home</a>
+            </li>
+            
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+            
+        </ul>
+    </nav><!-- end navigation menu -->
+
+    <div class="footer clearfix">
+        <ul class="social clearfix">
+            
+            
+                <li><a href="https://www.facebook.com/" class="fb" target="_blank" data-title="Facebook"></a></li>
+            
+            
+                <li><a href="https://www.behance.net/" class="behance" target="_blank" data-title="Behance"></a></li>
+            
+            
+                <li><a href="https://plus.google.com/+Pixelhint/posts" class="google" target="_blank" data-title="Google+"></a></li>
+            
+            
+                <li><a href="https://dribbble.com/pixelhint" class="dribble" target="_blank" data-title="Dribble"></a></li>
+            
+            
+            
+            
+        </ul><!-- end social -->
+
+        <div class="rights">
+            <p>Copyright © 2014 magnetic.</p>
+            <p>Template by <a href="http://pixelhint.com/magnetic-free-html5-responsive-photography-website-template/" target="_blank" rel="noopener">Pixelhint.com</a></p>
+            <p>Hexo Theme by <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan K.</a></p>
+        </div><!-- end rights -->
+    </div ><!-- end footer -->
+</header><!-- end header -->
+
+
+<!-- Main Content -->
+<section class="main clearfix">
+
+    <section class="top" style="background: url('http://placehold.it/1300x500');">
+        <div class="wrapper content_header clearfix">
+            
+
+<div class="work_nav">
+
+    <ul class="btn clearfix">
+        
+        <li><a href="/2019/12/30/Hexo%20-%20/" class="previous" data-title="Hexo - "></a></li>
+        
+        <li><a href="/" class="grid" data-title="Portfolio"></a></li>
+        
+        <li><a href="/2019/12/30/test/" class="next" data-title="测试"></a></li>
+        
+    </ul>
+
+</div><!-- end work_nav -->
+            <h1 class="title">Linux - dd - 使用总结</h1>
+        </div>
+    </section><!-- end top -->
+
+    <section class="wrapper">
+        <div class="content">
+
+            <!-- Gallery -->
+            
+
+            <!-- Content -->
+            <h1 id="dd命令中I-O模型的使用"><a href="#dd命令中I-O模型的使用" class="headerlink" title="dd命令中I/O模型的使用"></a><a href="https://lirenke.github.io/2015/01/07/io-model-dd-cmd/" target="_blank" rel="noopener">dd命令中I/O模型的使用</a></h1><p>By <a href="https://lirenke.github.io/about" target="_blank" rel="noopener">Lirenke</a></p>
+<p> Published Jan 7 2015</p>
+<p><strong>Contents</strong></p>
+<p>今天在工作中看到一封邮件，内容大体是开发人员指出了一处测试人员在测试过程中使用了错误的测试硬盘读写方法。测试采用dd命令，这个无可厚非，dd乃linux下与tcpdump齐名的强大命令，但是错的是没有加上FLAG，导致测试的结果显示硬盘写速度异常高。</p>
+<p>结合我之前写的那篇描述linux I/O模型栈的文章，很容易发现不加FLAG，dd命令将直接写给文件系统的页缓存中，写内存的速度当然远远高于写磁盘速度了。所以必须在FLAG中加上direct，这是我最直观的观点。但同事在邮件中指出应该用dsync这个FLAG，我随之看了下dd的帮助，FLAG下能控制IO行为有好几个，有direct，dsync，sync，fullblock，nonblock，nocache等。好奇心来了，看看这些都什么意思吧。</p>
+<ul>
+<li>FLAG — direct：使用direct I/O模式，即绕开文件系统，直接访问磁盘；</li>
+<li>FLAG — dsync：使用同步I/O模式。假设在写过程中设置，os会每当读取一段数据，立马就同步给磁盘；比如我dd命令设置的bs大小为4k，那么就会每次读取4k大小数据，就同步给磁盘，完了再读取下一段；</li>
+<li>FLAG — sync：跟上面的dsync类似，就是除了文件的实质内容外，还包括对文件元数据的同步；</li>
+<li>FLAG — fullblock：只能设置写操作，功能不清楚；</li>
+<li>FLAG — nonblock：使用非阻塞I/O模式。即是说，让dd命令在读写中，使用非阻塞，os的API在不满足读写要求情况下不会阻塞，会立即返回失败，让dd继续尝试直到成功；</li>
+<li>CONV — fdatasync:使用全量数据同步模式。即当所有的数据传输完毕时，最后再调用一把sync命令，使的cache中的数据同步到磁盘中。</li>
+</ul>
+<p>从以上情况看，个人认为要测试磁盘的实际I/O速度，设置成direct标志位是最接近真实值的。因为只有direct才会真正忽略写入到页缓存的时间，同时一旦磁盘空间可满足读写要求就能做读写操作，而nonblock非阻塞标志位会存在dd命令内部的重试等待时间的误差（没看过dd实现，个人观点），其他如dsync和sync，fdatasync都会经过页缓存。网上说dsync标志位应该是测试磁盘性能最标准的用法，因为dsync相当于数据库的一次插入操作。确实，dsync分段同步应该是最接近direct的，难道是direct会折损磁盘寿命所以不推荐的吗？除非os在处理direct的IO数据时，有其他我所不知道的消耗会影响测量数据。</p>
+<p>说到这儿了，也顺便八一八os中的I/O模型吧，温故知新。</p>
+<p>其实关于I/O模型的分类，特别是如何区分同步、异步、阻塞、非阻塞在多种场景下有多种定义，我且认为Richard在网络编程书刊中提到的五大模型为正统。</p>
+<ol>
+<li>阻塞</li>
+<li>非阻塞</li>
+<li>IO多路径复用</li>
+<li>信号</li>
+<li>异步</li>
+</ol>
+<p>第四种信号的方式不太常见，其他如阻塞，非阻塞和IO复用都属于同步模型，只有第五种异步才不是。阻塞模型最常见，比如应用程序调用一个read，然后卡顿，直到返回结果，其实里面经过了从用户态到内核态，等待内核态数据读写ok，通知或者拷贝数据到用户态中的过程；非阻塞就是如果内核态没准备好，上层立马放回错误，需要上层程序自行做个循环来重试，直到成功；<strong>而同步模型的概念，还是以读操作举例，其实就是看是谁把内核态中的读到数据拷贝到用户态中，如果是os自动完成的，必然属于同步模型，如果是os通知app，而app自己做这个操作，则属于异步。而io复用模型也只不过是在一次操作中能处理多个IO任务的阻塞模型而已，其产生的目的就是提高cpu利用率仅此而已。</strong><br>真正的异步操作，是不是就是epoll方法呢，nginx强大的高并发能力依赖的就是此方法，号称异步非阻塞？空了再研究下吧。</p>
+<p><a href="https://unix.stackexchange.com/questions/312687/why-is-sync-so-important-when-making-a-bootable-linux-usb-stick" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/312687/why-is-sync-so-important-when-making-a-bootable-linux-usb-stick</a></p>
+<p>The <code>dd</code> does not bypass the kernel disk caches when it writes to a device, so some part of data may be not written yet to the <code>USB</code> stick upon <code>dd</code> completion. If you unplug your <code>USB</code> stick at that moment, the content on the <code>USB</code> stick would be inconsistent. Thus, your system could even fail to boot from this <code>USB</code> stick.</p>
+<p><code>Sync</code> flushes any still-in-cache data to the device.</p>
+<p>Instead of invoking <code>sync</code> you could use <code>fdatasync</code> <code>dd</code>‘s conversion option:</p>
+<blockquote>
+<p>fdatasync</p>
+<p>physically write output file data before finishing</p>
+</blockquote>
+<p>In your case, the command would be:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xzOf archlinux-2016-09-03-dual.iso | \</span><br><span class="line">dd of&#x3D;&#x2F;dev&#x2F;disk2 bs&#x3D;4M status&#x3D;progress conv&#x3D;fdatasync</span><br></pre></td></tr></table></figure>
+
+<p>The <code>conv=fdatasync</code> makes <code>dd</code> effectively call <code>fdatasync()</code> system call at the end of transfer just before <code>dd</code> exits (I checked this with <code>dd</code>‘s sources).</p>
+<p>This confirms that <code>dd</code> would not bypass nor flush the caches unless explicitly instructed to do so.</p>
+
+
+            <!-- Tags -->
+            
+
+
+<div class="tags">
+    
+</div>
+
+
+
+            <!-- Comments -->
+            <div>
+                
+
+
+
+
+            </div>
+        </div><!-- end content -->
+    </section>
+</section><!-- end main -->
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+
+<script src="/js/jquery.js"></script>
+
+
+<!-- Custom Code -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+</body>
+
+</html>
