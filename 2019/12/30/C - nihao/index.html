@@ -1,194 +1,407 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<html lang="zh-CN">
 <head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-
-    <!--Description-->
-    
-        <meta name="description" content="main1234#include &amp;lt;stdio.h&amp;gt;int main () &amp;#123;    return 0;&amp;#125;">
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="蔬果大棚">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="C hello"/>
-    
-
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="户外小苑"/>
-
-    <!--Page Cover-->
-    
-        <meta property="og:image" content=""/>
-    
-
-    <!-- Title -->
-    
-    <title>C hello - 户外小苑</title>
-
-    <!-- Custom CSS -->
-    
-<link rel="stylesheet" href="/css/reset.css">
-
-    
 <link rel="stylesheet" href="/css/main.css">
 
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-    <!-- Gallery -->
-    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
 
-    <!-- Google Analytics -->
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://blog.nofq.xyz').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nihao">
+<meta property="og:url" content="https://blog.nofq.xyz/2019/12/30/C%20-%20nihao/index.html">
+<meta property="og:site_name" content="户外小苑">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-29T23:00:04.601Z">
+<meta property="article:modified_time" content="2019-12-30T04:52:02.786Z">
+<meta property="article:author" content="蔬果大棚">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.nofq.xyz/2019/12/30/C%20-%20nihao/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>nihao | 户外小苑</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">户外小苑</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <!--Favicon-->
-    
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-
-<body>
-
-<!-- Menu -->
-<!-- Navigation -->
-<header>
-    <div class="logo">
-        <a href="/">户外小苑</a>
-    </div><!-- end logo -->
-
-    <div id="menu_icon"></div>
-    <nav>
-        <ul>
-            
-            <li>
-                <a href="/">Home</a>
-            </li>
-            
-            <li>
-                <a href="/archives">Archives</a>
-            </li>
-            
-        </ul>
-    </nav><!-- end navigation menu -->
-
-    <div class="footer clearfix">
-        <ul class="social clearfix">
-            
-            
-                <li><a href="https://www.facebook.com/" class="fb" target="_blank" data-title="Facebook"></a></li>
-            
-            
-                <li><a href="https://www.behance.net/" class="behance" target="_blank" data-title="Behance"></a></li>
-            
-            
-                <li><a href="https://plus.google.com/+Pixelhint/posts" class="google" target="_blank" data-title="Google+"></a></li>
-            
-            
-                <li><a href="https://dribbble.com/pixelhint" class="dribble" target="_blank" data-title="Dribble"></a></li>
-            
-            
-            
-            
-        </ul><!-- end social -->
-
-        <div class="rights">
-            <p>Copyright © 2014 magnetic.</p>
-            <p>Template by <a href="http://pixelhint.com/magnetic-free-html5-responsive-photography-website-template/" target="_blank" rel="noopener">Pixelhint.com</a></p>
-            <p>Hexo Theme by <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan K.</a></p>
-        </div><!-- end rights -->
-    </div ><!-- end footer -->
-</header><!-- end header -->
-
-
-<!-- Main Content -->
-<section class="main clearfix">
-
-    <section class="top" style="background: url('http://placehold.it/1300x500');">
-        <div class="wrapper content_header clearfix">
+          <div class="content">
             
 
-<div class="work_nav">
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.nofq.xyz/2019/12/30/C%20-%20nihao/">
 
-    <ul class="btn clearfix">
-        
-        <li><a href="/2019/12/30/markdown/" class="previous" data-title="MarkDown 使用"></a></li>
-        
-        <li><a href="/" class="grid" data-title="Portfolio"></a></li>
-        
-        <li><a href="/2019/12/30/Hexo%20-%20/" class="next" data-title="Hexo - "></a></li>
-        
-    </ul>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="蔬果大棚">
+      <meta itemprop="description" content="">
+    </span>
 
-</div><!-- end work_nav -->
-            <h1 class="title">C hello</h1>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="户外小苑">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          nihao
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-30 07:00:04 / 修改时间：12:52:02" itemprop="dateCreated datePublished" datetime="2019-12-30T07:00:04+08:00">2019-12-30</time>
+            </span>
+
+          
+
         </div>
-    </section><!-- end top -->
+      </header>
 
-    <section class="wrapper">
-        <div class="content">
-
-            <!-- Gallery -->
-            
-
-            <!-- Content -->
-            <h3 id="main"><a href="#main" class="headerlink" title="main"></a>main</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-            <!-- Tags -->
-            
-
-
-<div class="tags">
     
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="e815cf34fe6adcc5ba53d57d12a38672aa9ea506fdd491f454ea9328fb5a8b2a">ad3cbb7b2af1c97847544d99dfb4ba88d518b81b8843c0d48661cb5462a1ec4747b27ef0fc6316e82efcfb1f66c4cbd2f72d7236a328f53be85a8516669145ed82ba5381a29f67a44e0aa80caadab9ca9ca88e836630ed7470f48665a54b9060b6743b7e7ccaeb9487489fce8e2c9059cf6ef1be3799f6cf13a242abfa8a002f499f2f1f3e2bd9c5fb792ec779c3647d572343853a31e2ca8fe60cfbd5480731487cfbc36b2879597458a9f0aa447132f78f80ed162e151a54e6e003d78dafd2c3f9708d2895b8262af381e60db2b38e951125d486195ed9a035250bc5618bd184fd5f4baf5143b5667557ae65e0e908b54b82c73da035a958f93709f61c59be6ed099aabe83978fd16311b5d6d0ec2a3e841d029423932758c563e6ac758fd4b802ad9119a2359f95e9be62a138a22c1361db52398a3b46bd7908008ef03b2bda00d98e125555b2482012f0b32ced624ac60b646f333732be3ae7bc173ac146e314f4727791b539970240d9d1c6765f1a5713208a42dd60f75fe7c1855c5ae76efcaa3b0a4b9060d323079cc280bb0506f26fb39f3a4acd84ae828c79b86e47e04b9f788f13cb37293167d9e1e499afcf5b1c10d94927d585a1e7bca9e3a0137385cc30fe9685136d32e8df82625a2bb0bf43868d7b64c3caeb7bb26d61e7bfa0bb19e852f5a930746edc1c177bdd796ad780c65895294232ad40c3d01ed6aa264d972dabe638442815dc210c47f16b79d2486f6e190c15c3250e90b82b539a7e1ff6c746a9da3921536781fc3278b2d98e9cce7aa775259f5af72f8ecfc55282e05992fe8b8bc127ab1a035d40f3c523e7bdc810dc4b6c7876ecce53d103993c7d4633f18837fa3d380f65084a69c37f1824a60cbf69200d3cf6070ebb048b70ecb48810b9adc7f9b0136da56eeea07df50afffabff56bbfa13bfacce53d51753264189fd9ffb8738f931b9c75ac61b5354890d0c40d40521e955bd14342c848a01616b84c9ff64eea831302047638c2bb2d0c89c1506a6c6b4a22cc6ce3fee7fcb42bed80c47f4fe480f6c783991a5adbb310a213fc014630539b52c41db0a91fbaee5d2f61e17058628aee68a936dbb845bf69b7a7c8bb06c1d660c3f3f517f31cf32ea2305627f801423d06ad65350e368afd370f9e002f24121f11d41558249cea63852147633af2c00d4c125b98e9eec59827edd505453a7cf7c7591fda1bd02143759a3af74a45ddb282d669d0f468727efb45c26fc9e8fa8f6407a1fff06cc8843f785f011f7dd25085560c</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/30/Hexo%20-%20/" rel="prev" title="Hexo - ">
+      <i class="fa fa-chevron-left"></i> Hexo - 
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/30/markdown/" rel="next" title="MarkDown 使用">
+      MarkDown 使用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">蔬果大棚</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
 </div>
 
 
 
-            <!-- Comments -->
-            <div>
-                
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蔬果大棚</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.6.0
+  </div>
+
+        
 
 
 
 
-            </div>
-        </div><!-- end content -->
-    </section>
-</section><!-- end main -->
-
-<!-- After footer scripts -->
-
-<!-- jQuery -->
-
-<script src="/js/jquery.js"></script>
 
 
-<!-- Custom Code -->
-
-<script src="/js/main.js"></script>
 
 
-<!-- Gallery -->
-<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+      </div>
+    </footer>
+  </div>
 
-<!-- Disqus Comments -->
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
-
 </html>

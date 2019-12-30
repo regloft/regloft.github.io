@@ -1,156 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<!-- Head tag -->
+<html lang="zh-CN">
 <head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-
-    <!--Description-->
-    
-        <meta name="description" content="安装 Node.jsCentOS 7 下安装 Node.js
-这是第一个坑，千万不要使用yum直接安装，似乎是直接安装版本太低， hexo 无法被正确执行。
-
-到官网下载最新的稳定版本，选择 Linux Binaries (x64)  的链接 
-123456# 下载wget https://node">
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="蔬果大棚">
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="使用 Hexo 搭建支持 MarkDown 语法的博客 (Archlinux)"/>
-    
-
-    <!--Open Graph Site Name-->
-    <meta property="og:site_name" content="户外小苑"/>
-
-    <!--Page Cover-->
-    
-        <meta property="og:image" content=""/>
-    
-
-    <!-- Title -->
-    
-    <title>使用 Hexo 搭建支持 MarkDown 语法的博客 (Archlinux) - 户外小苑</title>
-
-    <!-- Custom CSS -->
-    
-<link rel="stylesheet" href="/css/reset.css">
-
-    
 <link rel="stylesheet" href="/css/main.css">
 
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-    <!-- Gallery -->
-    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
 
-    <!-- Google Analytics -->
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://blog.nofq.xyz').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="[TOC] 安装 Node.jsCentOS 7 下安装 Node.js 这是第一个坑，千万不要使用yum直接安装，似乎是直接安装版本太低， hexo 无法被正确执行。  到官网下载最新的稳定版本，选择 Linux Binaries (x64)  的链接  123456# 下载wget https:&#x2F;&#x2F;nodejs.org&#x2F;dist&#x2F;v12.14.0&#x2F;node-v12.14.0-linux-x64">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Hexo 搭建支持 MarkDown 语法的博客 (Archlinux)">
+<meta property="og:url" content="https://blog.nofq.xyz/2019/12/30/Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/index.html">
+<meta property="og:site_name" content="户外小苑">
+<meta property="og:description" content="[TOC] 安装 Node.jsCentOS 7 下安装 Node.js 这是第一个坑，千万不要使用yum直接安装，似乎是直接安装版本太低， hexo 无法被正确执行。  到官网下载最新的稳定版本，选择 Linux Binaries (x64)  的链接  123456# 下载wget https:&#x2F;&#x2F;nodejs.org&#x2F;dist&#x2F;v12.14.0&#x2F;node-v12.14.0-linux-x64">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.nofq.xyz/2019/12/30/Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/image-20191230115903047.png">
+<meta property="og:image" content="https://blog.nofq.xyz/2019/12/30/Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/image-20191230071813790.png">
+<meta property="article:published_time" content="2019-12-29T23:00:04.611Z">
+<meta property="article:modified_time" content="2019-12-30T04:36:59.684Z">
+<meta property="article:author" content="蔬果大棚">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.nofq.xyz/2019/12/30/Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/image-20191230115903047.png">
+
+<link rel="canonical" href="https://blog.nofq.xyz/2019/12/30/Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>使用 Hexo 搭建支持 MarkDown 语法的博客 (Archlinux) | 户外小苑</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">户外小苑</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
     
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
 
-    <!--Favicon-->
-    
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-
-<body>
-
-<!-- Menu -->
-<!-- Navigation -->
-<header>
-    <div class="logo">
-        <a href="/">户外小苑</a>
-    </div><!-- end logo -->
-
-    <div id="menu_icon"></div>
-    <nav>
-        <ul>
-            
-            <li>
-                <a href="/">Home</a>
-            </li>
-            
-            <li>
-                <a href="/archives">Archives</a>
-            </li>
-            
-        </ul>
-    </nav><!-- end navigation menu -->
-
-    <div class="footer clearfix">
-        <ul class="social clearfix">
-            
-            
-                <li><a href="https://www.facebook.com/" class="fb" target="_blank" data-title="Facebook"></a></li>
-            
-            
-                <li><a href="https://www.behance.net/" class="behance" target="_blank" data-title="Behance"></a></li>
-            
-            
-                <li><a href="https://plus.google.com/+Pixelhint/posts" class="google" target="_blank" data-title="Google+"></a></li>
-            
-            
-                <li><a href="https://dribbble.com/pixelhint" class="dribble" target="_blank" data-title="Dribble"></a></li>
-            
-            
-            
-            
-        </ul><!-- end social -->
-
-        <div class="rights">
-            <p>Copyright © 2014 magnetic.</p>
-            <p>Template by <a href="http://pixelhint.com/magnetic-free-html5-responsive-photography-website-template/" target="_blank" rel="noopener">Pixelhint.com</a></p>
-            <p>Hexo Theme by <a href="http://www.codeblocq.com/" target="_blank" rel="noopener">Jonathan K.</a></p>
-        </div><!-- end rights -->
-    </div ><!-- end footer -->
-</header><!-- end header -->
-
-
-<!-- Main Content -->
-<section class="main clearfix">
-
-    <section class="top" style="background: url('http://placehold.it/1300x500');">
-        <div class="wrapper content_header clearfix">
+          <div class="content">
             
 
-<div class="work_nav">
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.nofq.xyz/2019/12/30/Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/">
 
-    <ul class="btn clearfix">
-        
-        <li><a href="/2019/12/30/Hello%20-%20World/" class="previous" data-title="世界很大"></a></li>
-        
-        <li><a href="/" class="grid" data-title="Portfolio"></a></li>
-        
-        <li><a href="/2019/12/30/Hexo%20-%20%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/" class="next" data-title="Hexo文章中插入图片"></a></li>
-        
-    </ul>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="蔬果大棚">
+      <meta itemprop="description" content="">
+    </span>
 
-</div><!-- end work_nav -->
-            <h1 class="title">使用 Hexo 搭建支持 MarkDown 语法的博客 (Archlinux)</h1>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="户外小苑">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          使用 Hexo 搭建支持 MarkDown 语法的博客 (Archlinux)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-30 07:00:04 / 修改时间：12:36:59" itemprop="dateCreated datePublished" datetime="2019-12-30T07:00:04+08:00">2019-12-30</time>
+            </span>
+
+          
+
         </div>
-    </section><!-- end top -->
+      </header>
 
-    <section class="wrapper">
-        <div class="content">
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-            <!-- Gallery -->
-            
-
-            <!-- Content -->
-            <h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 <code>Node.js</code></h2><h3 id="CentOS-7-下安装-Node-js"><a href="#CentOS-7-下安装-Node-js" class="headerlink" title="CentOS 7 下安装 Node.js"></a>CentOS 7 下安装 <code>Node.js</code></h3><blockquote>
+      
+        <p>[TOC]</p>
+<h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 <code>Node.js</code></h2><h3 id="CentOS-7-下安装-Node-js"><a href="#CentOS-7-下安装-Node-js" class="headerlink" title="CentOS 7 下安装 Node.js"></a>CentOS 7 下安装 <code>Node.js</code></h3><blockquote>
 <p>这是第一个坑，千万不要使用<code>yum</code>直接安装，似乎是直接安装版本太低， hexo 无法被正确执行。</p>
 </blockquote>
 <p>到官网<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">下载</a>最新的稳定版本，选择 Linux Binaries (x64)  的链接 </p>
@@ -163,7 +229,8 @@
 
 
 
-<h5 id="安装之后，可以使用以下两种方式执行-Hexo："><a href="#安装之后，可以使用以下两种方式执行-Hexo：" class="headerlink" title="安装之后，可以使用以下两种方式执行 Hexo："></a>安装之后，可以使用以下两种方式执行 Hexo：</h5><ol>
+<p>安装之后，可以使用以下两种方式执行 Hexo：</p>
+<ol>
 <li><p><code>npx hexo</code></p>
 </li>
 <li><p>将 Hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo</code>：</p>
@@ -178,62 +245,219 @@
 <p>i.e:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: http://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: http://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">magnetic</span></span><br><span class="line"><span class="comment">##### Next 主题</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="About-页"><a href="#About-页" class="headerlink" title="About 页"></a>About 页</h4><p>使用 <code>hexo new post &quot;about&quot;</code> 命令新建并编辑 about 页</p>
+<h3 id="About-页"><a href="#About-页" class="headerlink" title="About 页"></a>About 页</h3><p>使用 <code>hexo new post &quot;about&quot;</code> 命令新建并编辑 about 页</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">"about"</span></span><br></pre></td></tr></table></figure>
 
 <p>编辑 Next 主题的配置文件，路径是 hexo/themes/next/_config.yml</p>
-<p>去掉行注释</p>
-<h2 id="GitHub-密钥"><a href="#GitHub-密钥" class="headerlink" title="GitHub 密钥"></a>GitHub 密钥</h2><h3 id="上传-public-密钥"><a href="#上传-public-密钥" class="headerlink" title="上传 public 密钥"></a>上传 public 密钥</h3><p>按<a href="https://help.github.com/en/enterprise/2.17/user/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account" target="_blank" rel="noopener">这里</a>上传密钥，若上传成功，则所示如下</p>
-<img src="Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/image-20191230080330345.png" alt="image-20191230080330345" style="zoom: 67%;" />
+<h2 id="GitHub-密钥"><a href="#GitHub-密钥" class="headerlink" title="GitHub 密钥"></a>GitHub 密钥</h2><p>在终端里使用以下命令创建 SSH 密钥</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</span><br></pre></td></tr></table></figure>
 
-<h3 id="测试密钥"><a href="#测试密钥" class="headerlink" title="测试密钥"></a>测试密钥</h3><p>输入<code>ssh -T git@github.com</code>，如果如下图所示，出现你的用户名，那就成功了。</p>
-<p><img src="Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/image-20191230080006308.png" alt="image-20191230080006308"></p>
+<p>输入文件存路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/you/.ssh/id_rsa): [Press enter]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="将-SSH-密钥上传至-GitHub-账户"><a href="#将-SSH-密钥上传至-GitHub-账户" class="headerlink" title="将 SSH 密钥上传至 GitHub 账户"></a>将 SSH 密钥上传至 GitHub 账户</h3><p>参考 <a href="https://help.github.com/en/enterprise/2.17/user/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account" target="_blank" rel="noopener">Adding a new SSH key to your GitHub account</a> 将 SSH 密钥上传到 GitHub 账户</p>
+<p>若上传成功，则获得类似的结果</p>
+<img src="Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/image-20191230115903047.png" alt="image-20191230115903047" style="zoom: 55%;" />
+
+<h3 id="将-SSH-密钥添加到-ssh-agent"><a href="#将-SSH-密钥添加到-ssh-agent" class="headerlink" title="将 SSH 密钥添加到 ssh-agent"></a>将 SSH 密钥添加到 ssh-agent</h3><p>将密钥添加至 ssh-agent</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/your_id_rsa</span><br></pre></td></tr></table></figure>
+
+<p>输入 SSH 密钥 存放的文件路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; Identity added: &#x2F;home&#x2F;smith&#x2F;.ssh&#x2F;your_id_rsa (your@gmail.com)</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试-SSH-密钥"><a href="#测试-SSH-密钥" class="headerlink" title="测试 SSH 密钥"></a>测试 SSH 密钥</h3><p>测试能否被 GitHub 认证</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>若认证成功，将获得类似结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; Hi xxx! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+
 <h2 id="GitHub-Pages"><a href="#GitHub-Pages" class="headerlink" title="GitHub Pages"></a>GitHub Pages</h2><h3 id="在-GitHub-里设置定义的域名"><a href="#在-GitHub-里设置定义的域名" class="headerlink" title="在 GitHub 里设置定义的域名"></a>在 GitHub 里设置定义的域名</h3><p>如果仅在域名服务商里设置 <code>CNAME</code> 而不再 GitHub 里制定对应的域名的话，访问自定义域名的时候会提示 <code>404</code> 错误 ！</p>
 <p><img src="Hexo%20-%20%E4%BD%BF%E7%94%A8%20Hexo%20%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81%20MarkDown%20%E8%AF%AD%E6%B3%95%E7%9A%84%E5%8D%9A%E5%AE%A2%20(Archlinux)/image-20191230071813790.png" alt="image-20191230071813790"></p>
 <h3 id="强制启用-HTTPS"><a href="#强制启用-HTTPS" class="headerlink" title="强制启用 HTTPS"></a>强制启用 HTTPS</h3><p>刚制定的域名不会马上获得证书，需要等待大约 24 小时的时间来处理</p>
 <h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://www.jianshu.com/p/b8e7bb004a27" target="_blank" rel="noopener">https://www.jianshu.com/p/b8e7bb004a27</a></p>
 
+    </div>
 
-            <!-- Tags -->
-            
-
-
-<div class="tags">
     
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/12/30/Linux%20-%20%E6%95%88%E7%8E%87%E8%BD%AF%E4%BB%B6%20-%20%E7%BC%96%E8%BE%91%E4%B8%AD/" rel="prev" title="Linux - 效率软件 - 编辑中">
+      <i class="fa fa-chevron-left"></i> Linux - 效率软件 - 编辑中
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/12/30/Hexo%20-%20%E7%94%A8%20Typora%20%E7%9B%B4%E6%8E%A5%E5%A2%9E%E6%94%B9%20Hexo%20%E7%9A%84%E6%96%87%E7%AB%A0/" rel="next" title="用 Typora 直接增改 Hexo 的 Post">
+      用 Typora 直接增改 Hexo 的 Post <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Node-js"><span class="nav-number">1.</span> <span class="nav-text">安装 Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CentOS-7-下安装-Node-js"><span class="nav-number">1.1.</span> <span class="nav-text">CentOS 7 下安装 Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arch-Linux-下安装-Node-js"><span class="nav-number">1.2.</span> <span class="nav-text">Arch Linux 下安装 Node.js</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Hexo"><span class="nav-number">2.</span> <span class="nav-text">安装 Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Arch-Linux-下安装-Hexo"><span class="nav-number">2.1.</span> <span class="nav-text">Arch Linux 下安装 Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CentOS-7-下安装-Hexo"><span class="nav-number">2.2.</span> <span class="nav-text">CentOS 7 下安装 Hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主题"><span class="nav-number">2.2.1.</span> <span class="nav-text">主题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#About-页"><span class="nav-number">2.3.</span> <span class="nav-text">About 页</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-密钥"><span class="nav-number">3.</span> <span class="nav-text">GitHub 密钥</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#将-SSH-密钥上传至-GitHub-账户"><span class="nav-number">3.1.</span> <span class="nav-text">将 SSH 密钥上传至 GitHub 账户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将-SSH-密钥添加到-ssh-agent"><span class="nav-number">3.2.</span> <span class="nav-text">将 SSH 密钥添加到 ssh-agent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试-SSH-密钥"><span class="nav-number">3.3.</span> <span class="nav-text">测试 SSH 密钥</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Pages"><span class="nav-number">4.</span> <span class="nav-text">GitHub Pages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在-GitHub-里设置定义的域名"><span class="nav-number">4.1.</span> <span class="nav-text">在 GitHub 里设置定义的域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强制启用-HTTPS"><span class="nav-number">4.2.</span> <span class="nav-text">强制启用 HTTPS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文章"><span class="nav-number">5.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">蔬果大棚</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
 </div>
 
 
 
-            <!-- Comments -->
-            <div>
-                
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蔬果大棚</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.6.0
+  </div>
+
+        
 
 
 
 
-            </div>
-        </div><!-- end content -->
-    </section>
-</section><!-- end main -->
-
-<!-- After footer scripts -->
-
-<!-- jQuery -->
-
-<script src="/js/jquery.js"></script>
 
 
-<!-- Custom Code -->
-
-<script src="/js/main.js"></script>
 
 
-<!-- Gallery -->
-<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+      </div>
+    </footer>
+  </div>
 
-<!-- Disqus Comments -->
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
-
 </html>
